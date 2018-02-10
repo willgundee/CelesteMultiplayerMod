@@ -15,12 +15,12 @@ Also I don't know yet how to make a good setting menu so P2 controls are hardcod
 
 If you want to help or give suggestion go ahead and tell me on the Discord server
 
-TODO
--Fix P2 screen transition
--Make P2 spawn at the begining of a level
--Make a menu for P2 controls keybinds
--Make P2 able to interact with objects (such as block that move when the player is on it)
+###TODO
+- Fix P2 screen transition
+- Make P2 spawn at the begining of a level
+- Make a menu for P2 controls keybinds
+- Make P2 able to interact with objects (such as block that move when the player is on it)
 
-Possible future feature
--Online play
--Really cool vs idea that I just thought of
+###Possible future feature
+- Online play
+- Really cool vs idea that I just thought of
