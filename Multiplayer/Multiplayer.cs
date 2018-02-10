@@ -11,9 +11,25 @@ using System.Runtime.InteropServices;
 
 namespace Celeste.Mod.Multiplayer
 {
+    public class PlayerTwo : Player
+    {
+        public PlayerTwo(Vector2 position, PlayerSpriteMode spriteMode)
+            : base(position, spriteMode)
+        {
+        }
+
+        public override void Update()
+        {
+            Multiplayer.IsPlayerTwo = true;
+            base.Update();
+            Multiplayer.IsPlayerTwo = false;
+        }
+
+    }
     public class Multiplayer : EverestModule
     {
         public static Multiplayer Instance;
+        public static bool IsPlayerTwo;
 
         public override Type SettingsType => typeof(MultiplayerSettings);
         public static MultiplayerSettings Settings => (MultiplayerSettings)Instance._Settings;
