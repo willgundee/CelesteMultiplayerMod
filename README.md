@@ -4,6 +4,7 @@ This mod has for objective to make Celeste playable in multiplayer
 I added two classes in Celeste.mod.mm/patches PlayerTwo.cs and Input.cs
 
 PlayerTwo.cs exist only to diferenciate P1 and P2 and act just like a normal player
+
 Input.cs is used to separate P1 and P2 controls
 
 for the moment P2 screen transition are a bit buggy and P2 can't interact with most object 
