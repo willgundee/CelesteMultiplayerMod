@@ -83,6 +83,7 @@ namespace Celeste.Mod.Multiplayer
             RuntimeDetour.Undetour(m_IntroRespawnEnd);
             RuntimeDetour.Undetour(m_NextLevel);
             RuntimeDetour.Undetour(m_Begin);
+
             RuntimeDetour.Undetour(m_GetDash);
             RuntimeDetour.Undetour(m_GetJump);
             RuntimeDetour.Undetour(m_GetGrab);
@@ -112,24 +113,15 @@ namespace Celeste.Mod.Multiplayer
         public static d_NextLevel orig_NextLevel;
         public static void NextLevel(Level self, Vector2 at, Vector2 dir)
         {
+            // I need to find something cleaner
             if (Settings.Enabled)
             {
-                //Logger.Log("game at", at.X.ToString() + " | " + at.Y.ToString());
-                //Logger.Log("game dir", dir.X.ToString() + " | " + dir.Y.ToString());
                 float nearestValue = float.MaxValue;
                 Vector2 nearestPlayerPosition = new Vector2();
                 Vector2 nearestPlayerSpeed = new Vector2();
                 Celeste.Scene.Entities.FindAll<Player>().ForEach(player =>
                 {
                     float tempVal = Math.Abs(player.Position.X - at.X) + Math.Abs(player.Position.Y - at.Y);
-                    if (player is PlayerTwo)
-                    {
-                        Logger.Log("P2 diff", tempVal.ToString());
-                    }
-                    else
-                    {
-                        Logger.Log("P1 diff", tempVal.ToString());
-                    }
                     if (tempVal <= nearestValue)
                     {
                         nearestValue = tempVal;
@@ -137,9 +129,8 @@ namespace Celeste.Mod.Multiplayer
                         nearestPlayerSpeed = player.Speed;
                     }
                 });
-                Celeste.Scene.Entities.FindAll<Player>().ForEach(player => {
-                    //Logger.Log("P at", player.Position.X.ToString() + " | " + player.Position.Y.ToString());
-                    //Logger.Log("P dir", player.Speed.X.ToString() + " | " + player.Speed.Y.ToString());
+                Celeste.Scene.Entities.FindAll<Player>().ForEach(player =>
+                {
                     player.Position = at;
                     player.Speed = nearestPlayerSpeed;
                 });
